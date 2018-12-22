@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_bottom_between_button">10dp</dimen>
+    <dimen name="width_image_logo">200dp</dimen>
+    <dimen name="height_image_logo">100dp</dimen>
+    <dimen name="margin_left_right_button_group">33dp</dimen>
+    <dimen name="margin_bottom_button_group">30dp</dimen>
+    <dimen name="text_size_requiments">14sp</dimen>
+</resources>
