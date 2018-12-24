@@ -1,4 +1,5 @@
 import datetime
+from book import Book
 
 class Transaction:
 
@@ -6,3 +7,9 @@ class Transaction:
         self.owner = owner
         self.receiver = receiver
         self.day = str(datetime.datetime.now())
+
+    def setBook(self , book):
+        self.book = book
+        
+    def toString(self):
+        print(self.owner + " " + self.receiver + " " + self.book.author)
