@@ -7,7 +7,9 @@ class Book:
         self.owner = owner
         self.typeBook = typeBook
         self.author = author
-        self.day = str(datetime.datetime.now())
+        # TODO set day by system datetime
+        # self.day = str(datetime.datetime.now())
+        self.day = 'test'
 
     def setOwner(self , owner):
         self.owner = owner
@@ -16,4 +18,4 @@ class Book:
         self.day = dayAway
 
     def toString(self):
-        print(self.name + " " + self.owner + " " + self.typeBook + " " + self.author)
+        return self.name + " " + self.owner + " " + self.typeBook + " " + self.author

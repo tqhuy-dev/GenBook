@@ -4,15 +4,16 @@ import json
 
 class Block:
 
-    def __init__(self , prevProof , previousHash):
+    def __init__(self , prevProof , previousHash , index):
+        self.index = index
         self.transaction = []
         self.prevProof = prevProof
         self.timestamp = str(datetime.datetime.now())
         self.previousHash = previousHash
-        self.proof = self.proof_of_work
+        self.proof = self.proof_of_work()
 
     def addTransaction(self , transactionChild):
-        self.transaction.append(transactionChild)
+        self.transaction.append(transactionChild.toJSON())
 
     # def generateHash(self):
 
@@ -23,10 +24,31 @@ class Block:
             hashOperation = hashlib.sha256(str(newProof**2 - self.prevProof**2).encode()).hexdigest()
             if hashOperation[:4] == '0000':
                 checkProof = True
-                print(hashOperation)
+                # print(hashOperation)
             else:
                 newProof += 1
         
-        print(newProof)
+        # print(newProof)
         return newProof
+
+    def toString(self):
+        return (str(self.proof) + " " + self.previousHash)
         
+    def getAllTransaction(self):
+        for x in self.transaction:
+            print(x.toString())
+
+    def generateHash(self):
+        block = {
+            'index': self.index,
+            'transaction': self.transaction,
+            # TODO set timestamp by system datetime
+            'timestamp' : 'test',
+            'previousHash': self.previousHash,
+            'proof': self.proof
+        }
+
+        jsonString = json.dumps(block , sort_keys = True).encode()
+        print(jsonString)
+        self.hash = hashlib.sha256(jsonString).hexdigest()
+        print(self.hash)
