@@ -14,7 +14,7 @@ class Book:
     def setOwner(self , owner):
         self.owner = owner
 
-    def setDay(self , dayAway):
+    def setDayAway(self , dayAway):
         self.day = dayAway
 
     def toString(self):

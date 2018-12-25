@@ -10,14 +10,15 @@ class Block:
         self.prevProof = prevProof
         self.timestamp = str(datetime.datetime.now())
         self.previousHash = previousHash
-        self.proof = self.proof_of_work()
+        self.proof = self.mining()
+        self.generateHash()
 
     def addTransaction(self , transactionChild):
-        self.transaction.append(transactionChild.toJSON())
+        self.transaction.append(transactionChild)
 
     # def generateHash(self):
 
-    def proof_of_work(self):
+    def mining(self):
         newProof = 1
         checkProof = False
         while checkProof is False:
@@ -32,7 +33,7 @@ class Block:
         return newProof
 
     def toString(self):
-        return (str(self.proof) + " " + self.previousHash)
+        return (str(self.proof) + "\n" + self.previousHash + "\n")
         
     def getAllTransaction(self):
         for x in self.transaction:
@@ -52,3 +53,7 @@ class Block:
         print(jsonString)
         self.hash = hashlib.sha256(jsonString).hexdigest()
         print(self.hash)
+
+    def toJSON(self):
+        return json.dumps(self, default=lambda o: o.__dict__, 
+            sort_keys=True, indent=4)
