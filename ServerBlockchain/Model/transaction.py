@@ -2,8 +2,12 @@ import datetime
 from book import Book
 import json
 
+
 class Transaction:
 
+    # initialize class
+    # @param owner: person who is keeping books
+    # @param receiver: person who want to get books
     def __init__(self , owner , receiver):
         self.owner = owner
         self.receiver = receiver
@@ -11,6 +15,7 @@ class Transaction:
         # self.day = str(datetime.datetime.now())
         self.day = 'test'
 
+    # set the book to create a transaction
     def setBook(self , book):
         self.book = book
         
