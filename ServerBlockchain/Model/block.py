@@ -53,7 +53,7 @@ class Block:
             'index': self.index,
             'transaction': self.transaction,
             # TODO set timestamp by system datetime
-            'timestamp' : 'test',
+            'timestamp' : self.timestamp,
             'previousHash': self.previousHash,
             'proof': self.proof
         }

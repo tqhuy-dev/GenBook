@@ -12,8 +12,8 @@ class Transaction:
         self.owner = owner
         self.receiver = receiver
         # TODO set day by system datetime
-        # self.day = str(datetime.datetime.now())
-        self.day = 'test'
+        self.day = str(datetime.datetime.now())
+        # self.day = 'test'
 
     # set the book to create a transaction
     def setBook(self , book):

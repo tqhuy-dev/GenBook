@@ -24,3 +24,16 @@ class Chain:
         for x in self.blockchain:
             print(x.toJSON())
 
+    def writeJSONFile(self):
+        file = open("chain.json" , "w")
+        file.write('[' + '\n')
+        for index , x in enumerate(self.blockchain):
+            if(index == len(self.blockchain) -1 ):
+                file.write(x.toJSON()+''+'\n')
+            else:
+                file.write(x.toJSON()+','+'\n')
+        file.write(']' + '\n')
+        file.close()
+
+    # def readJSONFIle(self):
+
