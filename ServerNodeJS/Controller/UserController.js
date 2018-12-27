@@ -1,30 +1,28 @@
 const express = require('express');
 const router = express.Router();
 const UserDB = require('../Model/User')
+const UserData = require('../Database/UserDB');
 const mongoose = require('mongoose');
 
+router.get('/' , (req , res , next) =>{
+    UserDB.find({}).exec()
+    .then( docs =>{
+        res.status(200).json(docs)
+    })
+});
+
 router.post('/login' , (req , res , next) =>{
-    UserDB.find({
-        private_key:req.body.private_key
-    })
-    .exec()
-    .then( result =>{
-        if(result.length < 1){
-            return res.status(400).json({
-                error: 'auth fail'
-            });
-        }
-        else {
-            return res.status(200).json({
-                message:'auth successfully'
-            })
-        }
-    })
-    .catch( err =>{
-        res.status(500).json({
-            error:err
+    var userData = new UserData();
+    var promise = userData.checkAccount(req);
+    promise.then((data) => {
+        res.status(200).json({
+            data: data
+        });
+    } , (err) =>{
+        res.status(401).json({
+            status_code:err
         })
-    })
+    });
 });
 
 router.post('/' , (req, res , next) =>{

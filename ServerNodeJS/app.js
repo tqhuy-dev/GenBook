@@ -7,10 +7,14 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser')
 
 //connect mLab Database
-mongoose.connect('mongodb://tqhuy:Husky12345@ds153709.mlab.com:53709/database-test',{
+// mongoose.connect('mongodb://tqhuy:Husky12345@ds153709.mlab.com:53709/database-test',{
+//     useNewUrlParser :true
+// })
+
+//connect robo3T database 
+mongoose.connect('mongodb://localhost:27017/GenBook',{
     useNewUrlParser :true
 })
-
 
 // initialize morgan and bodyParser
 app.use(morgan('dev'))
