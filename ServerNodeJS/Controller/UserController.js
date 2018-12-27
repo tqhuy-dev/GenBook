@@ -4,11 +4,18 @@ const UserDB = require('../Model/User')
 const UserData = require('../Database/UserDB');
 const mongoose = require('mongoose');
 
+var userData = new UserData();
+
 router.get('/' , (req , res , next) =>{
-    UserDB.find({}).exec()
-    .then( docs =>{
-        res.status(200).json(docs)
-    })
+
+    var promise = userData.getAllUsers();
+    promise.then( (data) => {
+        res.status(200).json(data);
+    } , (error) =>{
+        res.status(401).json({
+            status_code_error:error
+        })
+    });
 });
 
 router.post('/login' , (req , res , next) =>{

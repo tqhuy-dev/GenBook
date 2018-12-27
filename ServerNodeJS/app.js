@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 const userController = require('./Controller/UserController');
+const bookController = require('./Controller/BookController');
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
@@ -57,6 +58,8 @@ app.get('/api/v1/data/genbook' , (req , res , next) =>{
         status:'success'
     })
 });
-app.use('/api/v1/user' , userController);
+
+app.use('/api/v1/users' , userController);
+app.use('/api/v1/books' , bookController);
 
 module.exports = app;

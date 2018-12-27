@@ -5,6 +5,10 @@ const userSchema = mongoose.Schema({
     username : String,
     password: String,
     private_key:String,
+    public_key:String,
+    coin:Number,
+    first_name:String,
+    last_name:String,
     books:[]
 });
 
