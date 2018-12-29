@@ -16,7 +16,6 @@ def homepage():
 
 @app.route('/api/v1/blockchain' , methods = ['GET'])
 def getBlockchain():
-    data = blockchainDB.find()
     chain = []
     for x in blockchainDB.find({} , {"_id": 0}):
         chain.append(x)
