@@ -18,6 +18,17 @@ router.get('/' , (req , res , next) =>{
     });
 });
 
+router.get('/:name' , (req , res , next) =>{
+    var promise = userData.findUserWithName(req.params.name);
+    promise.then((data) =>{
+        res.status(200).json(data);
+    } , (error) =>{
+        res.status(401).json({
+            status:error
+        });
+    });
+});
+
 router.post('/login' , (req , res , next) =>{
     var userData = new UserData();
     var promise = userData.checkAccount(req);

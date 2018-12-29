@@ -6,7 +6,7 @@ class BookData {
     getAllBooks(){
         return new Promise((resolve , reject) =>{
             var disableField = {
-                _id:false
+                // _id:false
             };
 
             BookDB.find({} , disableField)
@@ -22,6 +22,24 @@ class BookData {
                 reject(500);
             })
         })
+    }
+
+    getAllBooksWithName(name){
+        return new Promise((resolve , reject) =>{
+
+            BookDB.find({name:name} , function(err, result) {
+                console.log(name);
+                if(err) {
+                    reject(err);
+                } else {
+                    if(result.length > 0){
+                        resolve(result);
+                    } else {
+                        reject('no data')
+                    }
+                }
+            });
+        });
     }
 }
 

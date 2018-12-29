@@ -6,7 +6,7 @@ const bookSchema = mongoose.Schema({
     owner: String,
     typebook:String,
     author:String,
-    day:String
+    day:String,
 });
 
 module.exports = mongoose.model('BookDB' , bookSchema , 'BookDB');

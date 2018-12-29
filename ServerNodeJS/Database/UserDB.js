@@ -33,7 +33,7 @@ class UserData {
             _id:false,
             password:false,
             private_key:false,
-            books:false
+            // books:false
         };
 
         return new Promise((resolve , reject) =>{
@@ -49,6 +49,30 @@ class UserData {
             .catch(err =>{
                 reject(err);
             })
+        });
+    }
+
+    findUserWithName(name){
+
+        var disableField = {
+            _id:false,
+            password:false,
+            private_key:false,
+            coin:false
+        }
+
+        return new Promise((resolve , reject) =>{
+            UserDB.find({username:name} , disableField , (error , result) =>{
+                if(error) {
+                    reject(error);
+                } else {
+                    if(result.length > 0){
+                        resolve(result);
+                    } else {
+                        reject('no data');
+                    }
+                }
+            });
         });
     }
 }
